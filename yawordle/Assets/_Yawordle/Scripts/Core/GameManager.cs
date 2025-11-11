@@ -9,7 +9,7 @@ namespace Yawordle.Core
         public event Action<GuessValidationError> OnGuessValidationFailed;
         public event Action<int, string> OnGuessUpdated;
         public event Action<int, LetterState[]> OnGuessEvaluated;
-        public event Action<bool> OnGameFinished;
+        public event Action<GameResult> OnGameFinished;
 
         public string TargetWord => _targetWord;
         
@@ -71,7 +71,7 @@ namespace Yawordle.Core
 
             if (result.All(s => s == LetterState.Correct))
             {
-                OnGameFinished?.Invoke(true);
+                OnGameFinished?.Invoke(new GameResult(true, _currentAttempt));
                 return;
             }
 
@@ -80,7 +80,7 @@ namespace Yawordle.Core
 
             if (_currentAttempt >= MaxAttempts)
             {
-                OnGameFinished?.Invoke(false);
+                OnGameFinished?.Invoke(new GameResult(false, -1));
             }
         }
         

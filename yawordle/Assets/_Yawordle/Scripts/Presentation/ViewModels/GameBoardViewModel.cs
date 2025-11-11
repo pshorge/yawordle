@@ -119,10 +119,10 @@ namespace Yawordle.Presentation.ViewModels
             }
         }
 
-        private void OnGameFinished(bool isWin)
+        private void OnGameFinished(GameResult result)
         {
             IsGameFinished = true;
-            ShowEndGamePanel?.Invoke(isWin, _gameManager.TargetWord);
+            ShowEndGamePanel?.Invoke(result.IsWin, _gameManager.TargetWord);
         }
         
         public void TypeLetter(char letter)

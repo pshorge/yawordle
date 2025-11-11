@@ -21,6 +21,7 @@ namespace Yawordle.DI
             // Register game logic services. VContainer will automatically resolve their dependencies.
             builder.Register<IGameManager, GameManager>(Lifetime.Singleton);
             builder.Register<ISettingsService, JsonSettingsService>(Lifetime.Singleton);
+            builder.Register<IStatsService, JsonStatsService>(Lifetime.Singleton);
             builder.Register<IWordProvider, ResourceWordProvider>(Lifetime.Singleton);
             
             // --- Infrastructure Services ---
@@ -36,8 +37,11 @@ namespace Yawordle.DI
             builder.Register<SettingsViewModel>(Lifetime.Transient);
             
             // --- Application Entry Point ---
+            
             // It's responsible for the initial asynchronous setup, like fetching the word of the day.
             builder.Register<GameInitializer>(Lifetime.Singleton).As<IAsyncStartable>();
+            builder.Register<StatsHandler>(Lifetime.Singleton).As<IStartable>();
+
 
             // --- Views ---
             // Views are registered as IStartable to be initialized after all dependencies are built.
