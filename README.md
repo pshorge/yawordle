@@ -84,7 +84,7 @@ Assets/_Yawordle
 ## Getting Started 🚀
 
 - **Prerequisites**: Unity 6000.2 or newer.
-- **Clone**: `git clone https://github.com/hanejkopawel/yawordle.git`
+- **Clone**: `git clone https://github.com/pshorge/yawordle.git`
 - **Open**: Open the project via Unity Hub, load `Assets/Scenes/MainScene.unity`, and press Play.
 
 The UI is configured for portrait mode using `Scale With Screen Size` (reference 1080x1920, Match Width).
